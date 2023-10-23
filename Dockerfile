@@ -4,7 +4,7 @@ LABEL image.authors="JacekZubielik" \
       title="oled-evo-sabre" \
       description="Docker OLED Control Configuration for Audiophonics EvoSabre DAC & LMS" \
       licenses="MIT" \
-      image.url="ghcr.io/jacekzubielik/docker-oled-evo-sabre:master" \
+      image.url="ghcr.io/jacekzubielik/docker-oled-evo-sabre:main" \
       image.source="https://github.com/jacekzubielik/docker-oled-evo-sabre" \
       maintainer="JacekZubielik"
 

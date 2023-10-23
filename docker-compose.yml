@@ -21,7 +21,7 @@ networks:
 services:
 
   oled-evo-sabre:
-    image: ghcr.io/jacekzubielik/docker-oled-evo-sabre:master
+    image: ghcr.io/jacekzubielik/docker-oled-evo-sabre:main
     container_name: oled-evo-sabre
     privileged: true
     env_file:
