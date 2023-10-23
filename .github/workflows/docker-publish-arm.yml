@@ -10,7 +10,7 @@ on:
     - cron: '0 3 4 * * '
   push:
     branches:
-      - '**master'
+      - '**main'
       - '**test'
     tags: [ 'v*.*.*' ]
     paths-ignore:
@@ -26,7 +26,7 @@ on:
 
   pull_request:
     branches:
-      - '**master'
+      - '**main'
       - '**test'
     paths-ignore:
       - 'doc/**'
