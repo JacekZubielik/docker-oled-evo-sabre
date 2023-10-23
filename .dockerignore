@@ -1,0 +1,11 @@
+README.md
+/.git
+/.github
+/.gitattributes
+/.gitignore
+/.dockerignore
+/CHANGELOG.md
+/README.md
+.env
+/appdata
+/app/__pycache__

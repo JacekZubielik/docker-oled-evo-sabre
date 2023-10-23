@@ -1,0 +1,7 @@
+luma==2.1.5
+luma.oled==3.13.0
+pillow==9.5.0
+netifaces
+python-dotenv==1.0.0
+environs==9.5.0
+

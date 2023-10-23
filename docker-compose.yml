@@ -1,0 +1,39 @@
+version: "3.9"
+########################### NETWORKS
+networks:
+  t2_proxy:
+    name: t2_proxy
+    attachable: true
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.90.0/24
+  socket_proxy:
+    name: socket_proxy
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.91.0/24
+  default:
+    driver: bridge
+
+########################### SERVICES
+services:
+
+  oled-evo-sabre:
+    image: ghcr.io/jacekzubielik/docker-oled-evo-sabre:master
+    container_name: oled-evo-sabre
+    privileged: true
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - t2_proxy
+      - socket_proxy
+    volumes:
+    - ./appdata/oled4docker.cfg:/app/oled4docker.cfg:ro
+    - ./appdata/oled4docker.log:/var/log/oled4docker.log:rw
+    labels:
+      - "traefik.enable=false"
+
+
