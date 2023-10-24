@@ -1,0 +1,9 @@
+CHANGELOG
+2023-10-24
+ - Upgraded to python:3.9.18-slim.
+ - Added support for OLED SSD1327 and SSD1306.
+ - Time IP screen: Added a 24-hour clock without seconds. Removed IP address display.
+
+2023-10-23
+ - Disabled volume level display due to synchronization issues with hardware settings Audiophonics EvoSabre DAC.
+ - Added displaying variables defined in the .env file at startup.

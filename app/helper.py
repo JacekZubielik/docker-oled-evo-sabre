@@ -274,9 +274,9 @@ class SongData:
 class Display:
 	type=""
 	logo_xy = (0,0)
-	vol_screen_icon_xy = (0,0)
-	vol_screen_value_y = 0
-	vol_screen_rect = (0,0,0,0)
+	# vol_screen_icon_xy = (0,0)
+	# vol_screen_value_y = 0
+	# vol_screen_rect = (0,0,0,0)
 	title_artist_line1_y = 0
 	title_artist_line2_y = 0
 	pause_xy = (0, 0)
@@ -284,11 +284,11 @@ class Display:
 	title_line3_volume_icon_xy = (0,0)
 	title_line3_volume_val_xy = (0,0)
 	title_timebar = (0,0,0,0)
-	time_ip_logo_xy = (0,0)
-	time_ip_val_xy = (0,0)
+	# time_ip_logo_xy = (0,0)
+	# time_ip_val_xy = (0,0)
 	time_xy = (0,0)
-	time_vol_icon_xy = (0,0)
-	time_vol_val_xy = (0, 0)
+	#time_vol_icon_xy = (0,0)
+	#time_vol_val_xy = (0, 0)
 	scroll_unit = 0
 	width = 0
 	height = 0
@@ -296,7 +296,7 @@ class Display:
 	screensaveS_timeout = 0
 	audiophonics_logo_font_size = 0
 	connecting_font_size = 0
-	vol_large_font_size = 0
+	# vol_large_font_size = 0
 	logo_font_size = 0
 	logo_large_font_size = 0
 	title_artist_line_1_font_size = 0

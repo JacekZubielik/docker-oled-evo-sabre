@@ -28,6 +28,13 @@
 # Change to composed images and updating scrolling design
 # Auto switch contrast at dawn and dusk, using data from https://sunrise-sunset.org/api
 
+# Jacek Zubielik
+# Oct 2023
+# Dockerization of a Python3 script.
+# Added a 24-hour clock without seconds.
+# Disabled volume level display due to synchronization issues with hardware settings Audiophonics EvoSabre DAC.
+# Added displaying variables defined in the .env file at startup.
+
 import sys
 import importlib
 importlib.reload(sys)
@@ -47,22 +54,23 @@ from os import environ
 from dotenv import load_dotenv
 load_dotenv()
 
-print('TZ:			{}'.format(environ['TZ']))
-print('PUID:		{}'.format(environ['PUID']))
-print('PGID:		{}'.format(environ['PGID']))
-print('OLED:		{}'.format(environ['OLED']))
-print('LMSIP:		{}'.format(environ['LMSIP']))
-print('MAC:			{}'.format(environ['MAC']))
-print('LOGFILE:	    {}'.format(environ['LOGFILE']))
-print('LOCATION:	{}'.format(environ['LOCATION']))
+print('TZ:          {}'.format(environ['TZ']))
+print('PUID:        {}'.format(environ['PUID']))
+print('PGID:        {}'.format(environ['PGID']))
+print('OLED:        {}'.format(environ['OLED']))
+print('LMSIP:       {}'.format(environ['LMSIP']))
+print('MAC:         {}'.format(environ['MAC']))
+print('LOGFILE:     {}'.format(environ['LOGFILE']))
+print('LOCATION:    {}'.format(environ['LOCATION']))
 
 #====================
 # Ensure all required environment variables are set
-try:
-    os.environ['LOGFILE']
-except KeyError:
-    print('[error]: `$LOGFILE` environment variable required')
-    sys.exit(1)
+
+# try:
+#     os.environ['LOGFILE']
+# except KeyError:
+#     print('[error]: `$LOGFILE` environment variable required')
+#     sys.exit(1)
 
 File_Log_Format = "%(levelname)s %(asctime)s - %(message)s"
 Log_Format = "%(levelname)s	%(message)s"
@@ -127,28 +135,28 @@ if oled not in sections :
 	exit()
 
 display.type=config[oled]['type']
-display.vol_screen_icon_xy = helper.parse_int_tuple(config[oled]['vol_screen_icon_xy'])
-display.vol_screen_value_y = int(config[oled]['vol_screen_value_y'])
-display.vol_screen_rect = helper.parse_int_tuple(config[oled]['vol_screen_rect'])
+# display.vol_screen_icon_xy = helper.parse_int_tuple(config[oled]['vol_screen_icon_xy'])
+# display.vol_screen_value_y = int(config[oled]['vol_screen_value_y'])
+# display.vol_screen_rect = helper.parse_int_tuple(config[oled]['vol_screen_rect'])
 display.title_artist_line1_y = int(config[oled]['title_artist_line1_y'])
 display.title_artist_line2_y = int(config[oled]['title_artist_line2_y'])
 display.pause_xy = helper.parse_int_tuple(config[oled]['pause_xy'])
 display.title_line3_time_xy = helper.parse_int_tuple(config[oled]['title_line3_time_xy'])
-display.title_line3_volume_icon_xy = helper.parse_int_tuple(config[oled]['title_line3_volume_icon_xy'])
-display.title_line3_volume_val_xy = helper.parse_int_tuple(config[oled]['title_line3_volume_val_xy'])
+# display.title_line3_volume_icon_xy = helper.parse_int_tuple(config[oled]['title_line3_volume_icon_xy'])
+# display.title_line3_volume_val_xy = helper.parse_int_tuple(config[oled]['title_line3_volume_val_xy'])
 display.title_timebar = helper.parse_int_tuple(config[oled]['title_timebar'])
-display.time_ip_logo_xy = helper.parse_int_tuple(config[oled]['time_ip_logo_xy'])
-display.time_ip_val_xy = helper.parse_int_tuple(config[oled]['time_ip_val_xy'])
+# display.time_ip_logo_xy = helper.parse_int_tuple(config[oled]['time_ip_logo_xy'])
+# display.time_ip_val_xy = helper.parse_int_tuple(config[oled]['time_ip_val_xy'])
 display.time_xy = helper.parse_int_tuple(config[oled]['time_xy'])
-display.time_vol_icon_xy = helper.parse_int_tuple(config[oled]['time_vol_icon_xy'])
-display.time_vol_val_xy = helper.parse_int_tuple(config[oled]['time_vol_val_xy'])
+# display.time_vol_icon_xy = helper.parse_int_tuple(config[oled]['time_vol_icon_xy'])
+# display.time_vol_val_xy = helper.parse_int_tuple(config[oled]['time_vol_val_xy'])
 display.scroll_speed = int(config[oled]['scroll_speed'])
 display.spi_params = config[oled]['spi_params']
 display.device_params = config[oled]['device_params']
 display.screensave_timeout = int(config[oled]['screensave_timeout'])
 display.audiophonics_logo_font_size = int(config[oled]['audiophonics_logo_font_size'])
 display.connecting_font_size = int(config[oled]['connecting_font_size'])
-display.vol_large_font_size = int(config[oled]['vol_large_font_size'])
+# display.vol_large_font_size = int(config[oled]['vol_large_font_size'])
 display.logo_font_size = int(config[oled]['logo_font_size'])
 display.logo_large_font_size = int(config[oled]['logo_large_font_size'])
 display.title_artist_line_1_font_size = int(config[oled]['title_artist_line_1_font_size'])
@@ -158,7 +166,7 @@ display.time_large_font_size = int(config[oled]['time_large_font_size'])
 display.playing_polling_interval = int(config[oled]['playing_polling_interval'])
 display.stopped_polling_interval = int(config[oled]['stopped_polling_interval'])
 display.font_metadata=config[oled]['font_metadata']
-display.font_volume=config[oled]['font_volume']
+# display.font_volume=config[oled]['font_volume']
 display.font_info=config[oled]['font_info']
 display.font_connecting=config[oled]['font_connecting']
 display.font_audiophonics=config[oled]['font_audiophonics']
@@ -209,7 +217,7 @@ except:
 
 font_title_artist_line_1	= helper.make_font(display.font_metadata, display.title_artist_line_1_font_size)
 font_title_artist_line_2	= helper.make_font(display.font_metadata, display.title_artist_line_2_font_size)
-font_vol_large				= helper.make_font(display.font_volume, display.vol_large_font_size)
+#font_vol_large				= helper.make_font(display.font_volume, display.vol_large_font_size)
 font_info					= helper.make_font(display.font_info, display.info_font_size)
 font_connecting				= helper.make_font(display.font_connecting, display.connecting_font_size)
 
@@ -727,7 +735,7 @@ try:
 
 					ip_screen_composition.refresh()
 
-					draw.text(display.time_xy,time.strftime("%X"), font=font_time_large,fill="white")
+					draw.text(display.time_xy,time.strftime("%H:%M"), font=font_time_large,fill="white")
 				# 	if song_data.fixed_volume == False :
 				# 		draw.text(display.time_vol_val_xy, song_data.volume, font=font_info, fill="white")
 				screen_sleep = screen_sleep + 1
